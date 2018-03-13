@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/main_menu_follow_position"
+        android:checkable="true"
+        android:checked="true"
+        android:title="@string/main_menu_follow_position" />
+    <item
+        android:id="@+id/main_menu_set_position"
+        android:title="@string/main_menu_set_position" />
+    <item
+        android:id="@+id/main_menu_center_on_position"
+        android:title="@string/main_menu_center_on_position" />
+    <item
+        android:id="@+id/main_menu_center_on_mycarpoint"
+        android:title="@string/main_menu_center_on_mycarpoint" />
+    <item
+        android:id="@+id/main_menu_restore_position"
+        android:title="@string/main_menu_restore_position" />
+    <item
+        android:id="@+id/main_menu_open_map_file"
+        android:title="@string/main_menu_open_map_file" />
+
+</menu>
