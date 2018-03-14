@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">MarkMyCar</string>
+
+    <string name="copyright_osm">Map data © OpenStreetMap contributors</string>
+
+    <string name="main_menu_follow_position">Position verfolgen</string>
+    <string name="main_menu_set_position">Auto an Position setzen</string>
+    <string name="main_menu_center_on_position">Position zentrieren</string>
+    <string name="main_menu_center_on_mycarpoint">Autoposition zentrieren</string>
+    <string name="main_menu_restore_position">Autoposition wiederherstellen</string>
+    <string name="main_menu_open_map_file">Map-Datei öffnen</string>
+    <string name="main_menu_help">Hilfe</string>
+    <string name="main_menu_about">Über</string>
+
+    <string name="help_title">Hilfe</string>
+    <string name="about_title">Über</string>
+
+    <string name="open_map_file">Öffnen Sie eine Map-Datei (Menü)</string>
+
+</resources>

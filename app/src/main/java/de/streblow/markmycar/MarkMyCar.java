@@ -136,6 +136,16 @@ public class MarkMyCar extends MapViewerTemplate implements LocationListener {
                 FileOpenDialog.Default_File_Name = "";
                 FileOpenDialog.chooseFile_or_Dir();
                 return true;
+            case R.id.main_menu_help:
+                HelpDialog help = new HelpDialog(this);
+                help.setTitle(R.string.help_title);
+                help.show();
+                return true;
+            case R.id.main_menu_about:
+                AboutDialog about = new AboutDialog(this);
+                about.setTitle(R.string.about_title);
+                about.show();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -2,23 +2,37 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/main_menu_follow_position"
+        android:orderInCategory="100"
         android:checkable="true"
         android:checked="true"
         android:title="@string/main_menu_follow_position" />
     <item
         android:id="@+id/main_menu_set_position"
+        android:orderInCategory="110"
         android:title="@string/main_menu_set_position" />
     <item
         android:id="@+id/main_menu_center_on_position"
+        android:orderInCategory="120"
         android:title="@string/main_menu_center_on_position" />
     <item
         android:id="@+id/main_menu_center_on_mycarpoint"
+        android:orderInCategory="130"
         android:title="@string/main_menu_center_on_mycarpoint" />
     <item
         android:id="@+id/main_menu_restore_position"
+        android:orderInCategory="140"
         android:title="@string/main_menu_restore_position" />
     <item
         android:id="@+id/main_menu_open_map_file"
+        android:orderInCategory="150"
         android:title="@string/main_menu_open_map_file" />
+    <item
+        android:id="@+id/main_menu_help"
+        android:orderInCategory="160"
+        android:title="@string/main_menu_help" />
+
+    <item android:id="@+id/main_menu_about"
+        android:orderInCategory="170"
+        android:title="@string/main_menu_about" />
 
 </menu>

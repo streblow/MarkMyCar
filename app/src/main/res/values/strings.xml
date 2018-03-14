@@ -9,6 +9,11 @@
     <string name="main_menu_center_on_mycarpoint">Center on car position</string>
     <string name="main_menu_restore_position">Restore car position</string>
     <string name="main_menu_open_map_file">Open map file</string>
+    <string name="main_menu_help">Help</string>
+    <string name="main_menu_about">About</string>
+
+    <string name="about_title">About</string>
+    <string name="help_title">Help</string>
 
     <string name="open_map_file">Open a map file (see menu)</string>
 
