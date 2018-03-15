@@ -4,9 +4,9 @@
     <string name="copyright_osm">Map data © OpenStreetMap contributors</string>
 
     <string name="main_menu_follow_position">Follow position</string>
-    <string name="main_menu_set_position">Set car on position</string>
-    <string name="main_menu_center_on_position">Center on position</string>
-    <string name="main_menu_center_on_mycarpoint">Center on car position</string>
+    <string name="main_menu_set_position">Set car at position</string>
+    <string name="main_menu_center_on_position">Center at position</string>
+    <string name="main_menu_center_on_mycarpoint">Center at car position</string>
     <string name="main_menu_restore_position">Restore car position</string>
     <string name="main_menu_open_map_file">Open map file</string>
     <string name="main_menu_help">Help</string>

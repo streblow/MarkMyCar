@@ -1,1 +1,14 @@
-Die Hilfe für MarkMyCar ist noch nicht fertig.
+Benutzen Sie MarkMyCar, um die Position zu markieren, an der Sie Ihr Auto geparkt haben.<br>
+Starten Sie einfach die App, warten Sie, bis Ihr Gerät die Position festgestellt hat, und wählen Sie "Auto an Position setzen" im Menü. Sie können die Position auch durch einen langen Klick auf die passende Position auf der Karte festlegen.<br>
+Wenn Sie die App zum ersten Mal starten, werden Sie einen Hinweis sehen, Sie mögen eine Map-Datei öffnen. Sie können "Map-Datei öffnen" im Menü wählen und durch die Dateien auf Ihrem Gerät navigieren. Üblicherweise werden Offline-Karten auf der externen SD-Card gespeichert, weil sie einige Megabytes an Speicherplatz benötigen. Auf Geräten mit neueren Android-Versionen können Sie Ihre exterene SD-Card als Unterordner im "/storage"-Ordner finden mit kryptisch anmutendem Namen wie "a3f5-cfa6" oder ähnlich. Auf älteren Android-Geräten finden Sie sie auch im "/storage"-Ordner, allerdings mit einem Namen wie "ext_card" oder ähnlich.<br>
+Solche Offline-Karten können Sie kostenlos von der Mapsforge-Website herunterladen, wo Sie Links zu den aktuellen Karten Ihrer Gegend finden. So werden Sie kein Daten-Volumen verbrauchen, wenn Sie MarkMyCar benutzen (Offline-App)!<br>
+Natürlich können Sie auch jede beliebige andere Position auf der Karte markieren, an die Sie sich erinnern wollen oder müssen!<br>
+<b>Das Menü:</b><br>
+<i>"Position verfolgen":</i> Die App scrollt automatisch so, dass die aktuelle Position in der Mapview zentriert wird. Sie können dieses Verhalten an- oder ausschalten.<br>
+<i>"Auto an Position setzen":</i> Die App setzt die Autoposition auf die aktuelle Position.<br>
+<i>"Position zentrieren":</i> Die App scrollt die Karte einmalig so, dass die aktuelle Position in der Mapview zentriert wird.<br>
+<i>"Autoposition zentrieren":</i> Die App scrollt die Karte einmalig so, dass die aktuelle Autoposition in der Mapview zentriert wird.<br>
+<i>"Autoposition wiederherstellen":</i> Wenn Sie versehentlich Ihre Autoposition verändert haben, könne Sie den vorherigen Status wiederherstellen. Das geht aber nur einmal. Wenn Sie keine Autoposition markiert hatten, wird auch die Markierung gelöscht..<br>
+<i>"Map-Datei öffnen":</i> Navigieren Sie zu einer Map-Datei auf Ihrem Gerät. Sie können den Dialog abbrechen.<br>
+<i>"Hilfe":</i> Lesen Sie diese Hilfe.<br>
+<i>"Über":</i> Zeigt Details über diese App und ihren Autoren an.

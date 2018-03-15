@@ -1,1 +1,14 @@
-MarkMyCar help is not ready yet.
+Use MarkMyCar to bookmark the position you parked your car at.<br>
+Just start the app, let your device fix the current position and choose "Set car at position" from the menu. You can also set the position by a long click at the appropriate position at the map.<br>
+When you start the app for the first time, you'll get a hint to load a mapsforge map. You can choose "Open map file" from the menu and browse through the files at your device. Usually offline maps are stored at the external sd card because they need some Mega bytes. At devices with newer android versions you can find your external sd card as subfolder in the folder "/storage" with a cryptic name like "a3f5-cfa6" or similar. At older devices it can be also found in the "/storage" folder, but with a name like "ext_card" or similar.<br>
+Those offline map files you can freely download from the mapsforge website where you can find links to latest maps of your region. So you won't have internet traffic when you use MarkMyCar (offline app)!<br>
+Of coarse you can mark any position at the map to remember it!<br>
+<b>The menu:</b><br>
+<i>"Follow position":</i> The app automatically scrolls the map to keep the current position at the map view's center. You can turn this feature on or off.<br>
+<i>"Set car at position":</i> The app pins the park position at the current position.<br>
+<i>"Center at position":</i> The app once scrolls the map to get the current position at the map view's center.<br>
+<i>"Center at car position":</i> The app once scrolls the map to get the car position at the map view's center.<br>
+<i>"Restore car position":</i> If you mistakenly changed your car position you can restore the previous state. This works only one step back. If you hadn't have marked a position your marker will disappear.<br>
+<i>"Open a map file":</i> Browse your device for a new map file. You can cancel this dialog.<br>
+<i>"Help":</i> Read this help file.<br>
+<i>"About":</i> Show details about the author and the app.
