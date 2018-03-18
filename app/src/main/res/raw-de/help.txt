@@ -8,7 +8,7 @@ Natürlich können Sie auch jede beliebige andere Position auf der Karte markier
 <i>"Auto an Position setzen":</i> Die App setzt die Autoposition auf die aktuelle Position.<br>
 <i>"Position zentrieren":</i> Die App scrollt die Karte einmalig so, dass die aktuelle Position in der Mapview zentriert wird.<br>
 <i>"Autoposition zentrieren":</i> Die App scrollt die Karte einmalig so, dass die aktuelle Autoposition in der Mapview zentriert wird.<br>
-<i>"Autoposition wiederherstellen":</i> Wenn Sie versehentlich Ihre Autoposition verändert haben, könne Sie den vorherigen Status wiederherstellen. Das geht aber nur einmal. Wenn Sie keine Autoposition markiert hatten, wird auch die Markierung gelöscht..<br>
+<i>"Autoposition wiederherstellen":</i> Wenn Sie versehentlich Ihre Autoposition verändert haben, können Sie den vorherigen Status wiederherstellen. Das geht aber nur einmal. Wenn Sie keine Autoposition markiert hatten, wird auch die Markierung gelöscht..<br>
 <i>"Map-Datei öffnen":</i> Navigieren Sie zu einer Map-Datei auf Ihrem Gerät. Sie können den Dialog abbrechen.<br>
 <i>"Hilfe":</i> Lesen Sie diese Hilfe.<br>
 <i>"Über":</i> Zeigt Details über diese App und ihren Autoren an.
