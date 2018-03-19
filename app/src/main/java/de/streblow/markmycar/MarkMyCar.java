@@ -1,6 +1,7 @@
 package de.streblow.markmycar;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -10,7 +11,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -119,12 +119,10 @@ public class MarkMyCar extends MapViewerTemplate implements LocationListener {
                 }
                 return true;
             case R.id.main_menu_open_map_file:
-                SimpleFileDialog FileOpenDialog =  new SimpleFileDialog(this, "FileOpen",
-                        new SimpleFileDialog.SimpleFileDialogListener()
-                        {
+                SimpleFileDialog FileOpenDialog = new SimpleFileDialog(this, "FileOpen",
+                        new SimpleFileDialog.SimpleFileDialogListener() {
                             @Override
-                            public void onChosenDir(String chosenFile)
-                            {
+                            public void onChosenDir(String chosenFile) {
                                 // The code in this function will be executed when the dialog OK button is pushed
                                 if (chosenFile != "") {
                                     mapfile_path = chosenFile.replace("//", "/");
@@ -202,7 +200,7 @@ public class MarkMyCar extends MapViewerTemplate implements LocationListener {
         restorePreferences();
         if (mapfile_path == "")
             Toast.makeText(this, getString(R.string.open_map_file),
-                Toast.LENGTH_LONG).show();
+                    Toast.LENGTH_LONG).show();
         else {
             tileRendererLayer = new TileRendererLayer(
                     this.tileCaches.get(0), getMapFile(),
@@ -443,24 +441,14 @@ public class MarkMyCar extends MapViewerTemplate implements LocationListener {
         }
     }
 
+    @SuppressLint("MissingPermission")
     private void enableAvailableProviders() {
         this.locationManager.removeUpdates(this);
 
         for (String provider : this.locationManager.getProviders(true)) {
             if (LocationManager.GPS_PROVIDER.equals(provider)
-                    || LocationManager.NETWORK_PROVIDER.equals(provider)) {
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
-                    return;
-                }
-                this.locationManager.requestLocationUpdates(provider, 0, 0, this);
-            }
+                    || LocationManager.NETWORK_PROVIDER.equals(provider))
+                        this.locationManager.requestLocationUpdates(provider, 0, 0, this);
         }
     }
 
