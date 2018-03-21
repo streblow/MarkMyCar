@@ -51,6 +51,8 @@ public class SimpleFileDialog
     private SimpleFileDialogListener m_SimpleFileDialogListener = null;
     private ArrayAdapter<String> m_listAdapter = null;
 
+    static ContextThemeWrapper themeWrapper = null;
+
     //////////////////////////////////////////////////////
     // Callback interface for selected directory
     //////////////////////////////////////////////////////
@@ -237,7 +239,7 @@ public class SimpleFileDialog
     private AlertDialog.Builder createDirectoryChooserDialog(String title, List<String> listItems,
                                                              DialogInterface.OnClickListener onClickListener)
     {
-        ContextThemeWrapper themeWrapper = new ContextThemeWrapper(m_context, R.style.FileOpenDialogTheme);
+        themeWrapper = new ContextThemeWrapper(m_context, R.style.FileOpenDialogTheme);
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(themeWrapper);
         ////////////////////////////////////////////////
         // Create title text showing file select type //
@@ -251,9 +253,9 @@ public class SimpleFileDialog
 
         //need to make this a variable Save as, Open, Select Directory
         m_titleView1.setGravity(Gravity.CENTER_VERTICAL);
-        m_titleView1.setBackgroundColor( m_context.getResources().getColor(R.color.colorPrimary)); // dark gray 	-12303292
-        m_titleView1.setTextColor( m_context.getResources().getColor(android.R.color.white) );
-        m_titleView1.setTextSize(m_context.getResources().getDimension(R.dimen.textsize));
+        m_titleView1.setBackgroundColor( themeWrapper.getResources().getColor(R.color.fileDialogColorPrimary)); // dark gray 	-12303292
+        m_titleView1.setTextColor( themeWrapper.getResources().getColor(android.R.color.white) );
+        m_titleView1.setTextAppearance(themeWrapper, R.style.Medium);
 
         // Create custom view for AlertDialog title
         LinearLayout titleLayout1 = new LinearLayout(m_context);
@@ -313,9 +315,9 @@ public class SimpleFileDialog
 
         m_titleView = new TextView(m_context);
         m_titleView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-        m_titleView.setBackgroundColor(m_context.getResources().getColor(R.color.colorPrimaryDark)); // dark gray -12303292
-        m_titleView.setTextColor( m_context.getResources().getColor(android.R.color.white) );
-        m_titleView.setTextSize(m_context.getResources().getDimension(R.dimen.textsize));
+        m_titleView.setBackgroundColor(themeWrapper.getResources().getColor(R.color.fileDialogColorPrimaryDark)); // dark gray -12303292
+        m_titleView.setTextColor( themeWrapper.getResources().getColor(android.R.color.white) );
+        m_titleView.setTextAppearance(themeWrapper, R.style.Medium);
         m_titleView.setGravity(Gravity.CENTER_VERTICAL);
         m_titleView.setText(title);
 
@@ -324,8 +326,9 @@ public class SimpleFileDialog
         if (Select_type == FileOpen || Select_type == FileSave)
         {
             input_text = new EditText(m_context);
+            input_text.setTextAppearance(themeWrapper, R.style.Medium);
             input_text.setText(Default_File_Name);
-            input_text.setBackgroundColor(m_context.getResources().getColor(R.color.colorAccent)); // dark gray -12303292
+            input_text.setBackgroundColor(themeWrapper.getResources().getColor(R.color.fileDialogColorAccent)); // dark gray -12303292
             titleLayout.addView(input_text);
         }
         //////////////////////////////////////////
@@ -364,6 +367,7 @@ public class SimpleFileDialog
                 {
                     // Enable list item (directory) text wrapping
                     TextView tv = (TextView) v;
+                    tv.setTextAppearance(SimpleFileDialog.themeWrapper, R.style.Medium);
                     tv.getLayoutParams().height = LayoutParams.WRAP_CONTENT;
                     tv.setEllipsize(null);
                 }

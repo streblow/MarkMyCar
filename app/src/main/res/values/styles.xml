@@ -9,11 +9,15 @@
         <item name="android:colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="FileOpenDialogTheme" parent="android:Theme.Material.Light.DarkActionBar">
-        <item name="android:colorPrimary">@color/colorPrimary</item>
-        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="android:colorAccent">@color/colorAccent</item>
-        <item name="android:textSize">12sp</item>
+    <style name="FileOpenDialogTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
+        <item name="android:colorPrimary">@color/fileDialogColorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/fileDialogColorPrimaryDark</item>
+        <item name="android:colorAccent">@color/fileDialogColorAccent</item>
+        <item name="android:textViewStyle">@style/Medium</item>
+    </style>
+
+    <style name="Medium" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">20sp</item>
     </style>
 
 </resources>

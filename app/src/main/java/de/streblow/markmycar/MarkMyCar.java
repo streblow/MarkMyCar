@@ -448,7 +448,7 @@ public class MarkMyCar extends MapViewerTemplate implements LocationListener {
         for (String provider : this.locationManager.getProviders(true)) {
             if (LocationManager.GPS_PROVIDER.equals(provider)
                     || LocationManager.NETWORK_PROVIDER.equals(provider))
-                        this.locationManager.requestLocationUpdates(provider, 0, 0, this);
+                        this.locationManager.requestLocationUpdates(provider, 10000, 0, this);
         }
     }
 
