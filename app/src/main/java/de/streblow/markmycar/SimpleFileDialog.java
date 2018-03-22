@@ -12,9 +12,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 //import android.content.DialogInterface.OnKeyListener;
-import android.os.Environment;
 import android.text.Editable;
-import android.util.TypedValue;
+import android.text.InputType;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 //import android.view.KeyEvent;
@@ -42,13 +41,14 @@ public class SimpleFileDialog
     private Context m_context;
     private TextView m_titleView1;
     private TextView m_titleView;
-    public String Default_File_Name = "default";
+    public String Default_File_Name = "";
     private String Selected_File_Name = Default_File_Name;
     private EditText input_text;
 
     private String m_dir = "";
     private List<String> m_subdirs = null;
     private SimpleFileDialogListener m_SimpleFileDialogListener = null;
+    private AlertDialog m_dirsDialog = null;
     private ArrayAdapter<String> m_listAdapter = null;
 
     static ContextThemeWrapper themeWrapper = null;
@@ -170,10 +170,10 @@ public class SimpleFileDialog
             }
         }).setNegativeButton(m_context.getResources().getText(R.string.file_dialog_cancel), null);
 
-        final AlertDialog dirsDialog = dialogBuilder.create();
+        m_dirsDialog = dialogBuilder.create();
 
         // Show directory chooser dialog
-        dirsDialog.show();
+        m_dirsDialog.show();
     }
 
     private boolean createSubDir(String newDir)
@@ -253,9 +253,9 @@ public class SimpleFileDialog
 
         //need to make this a variable Save as, Open, Select Directory
         m_titleView1.setGravity(Gravity.CENTER_VERTICAL);
+        m_titleView1.setTextAppearance(themeWrapper, R.style.Medium);
         m_titleView1.setBackgroundColor( themeWrapper.getResources().getColor(R.color.fileDialogColorPrimary)); // dark gray 	-12303292
         m_titleView1.setTextColor( themeWrapper.getResources().getColor(android.R.color.white) );
-        m_titleView1.setTextAppearance(themeWrapper, R.style.Medium);
 
         // Create custom view for AlertDialog title
         LinearLayout titleLayout1 = new LinearLayout(m_context);
@@ -272,37 +272,37 @@ public class SimpleFileDialog
             newDirButton.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
             newDirButton.setText("New Folder");
             newDirButton.setOnClickListener(new View.OnClickListener()
-                                            {
-                                                @Override
-                                                public void onClick(View v)
-                                                {
-                                                    final EditText input = new EditText(m_context);
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        final EditText input = new EditText(m_context);
 
-                                                    // Show new folder name input dialog
-                                                    new AlertDialog.Builder(m_context).
-                                                            setTitle("New Folder Name").
-                                                            setView(input).setPositiveButton("OK", new DialogInterface.OnClickListener()
-                                                    {
-                                                        public void onClick(DialogInterface dialog, int whichButton)
-                                                        {
-                                                            Editable newDir = input.getText();
-                                                            String newDirName = newDir.toString();
-                                                            // Create new directory
-                                                            if ( createSubDir(m_dir + "/" + newDirName) )
-                                                            {
-                                                                // Navigate into the new directory
-                                                                m_dir += "/" + newDirName;
-                                                                updateDirectory();
-                                                            }
-                                                            else
-                                                            {
-                                                                Toast.makeText(	m_context, "Failed to create '"
-                                                                        + newDirName + "' folder", Toast.LENGTH_SHORT).show();
-                                                            }
-                                                        }
-                                                    }).setNegativeButton("Cancel", null).show();
-                                                }
-                                            }
+                        // Show new folder name input dialog
+                        new AlertDialog.Builder(m_context).
+                                setTitle("New Folder Name").
+                                setView(input).setPositiveButton("OK", new DialogInterface.OnClickListener()
+                        {
+                            public void onClick(DialogInterface dialog, int whichButton)
+                            {
+                                Editable newDir = input.getText();
+                                String newDirName = newDir.toString();
+                                // Create new directory
+                                if ( createSubDir(m_dir + "/" + newDirName) )
+                                {
+                                    // Navigate into the new directory
+                                    m_dir += "/" + newDirName;
+                                    updateDirectory();
+                                }
+                                else
+                                {
+                                    Toast.makeText(	m_context, "Failed to create '"
+                                            + newDirName + "' folder", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }).setNegativeButton("Cancel", null).show();
+                    }
+                }
             );
             titleLayout1.addView(newDirButton);
         }
@@ -315,17 +315,18 @@ public class SimpleFileDialog
 
         m_titleView = new TextView(m_context);
         m_titleView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+        m_titleView.setTextAppearance(themeWrapper, R.style.Medium);
         m_titleView.setBackgroundColor(themeWrapper.getResources().getColor(R.color.fileDialogColorPrimaryDark)); // dark gray -12303292
         m_titleView.setTextColor( themeWrapper.getResources().getColor(android.R.color.white) );
-        m_titleView.setTextAppearance(themeWrapper, R.style.Medium);
         m_titleView.setGravity(Gravity.CENTER_VERTICAL);
-        m_titleView.setText(title);
+        m_titleView.setText(title.replace("//", "/"));
 
         titleLayout.addView(m_titleView);
 
         if (Select_type == FileOpen || Select_type == FileSave)
         {
             input_text = new EditText(m_context);
+            input_text.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
             input_text.setTextAppearance(themeWrapper, R.style.Medium);
             input_text.setText(Default_File_Name);
             input_text.setBackgroundColor(themeWrapper.getResources().getColor(R.color.fileDialogColorAccent)); // dark gray -12303292
@@ -346,7 +347,9 @@ public class SimpleFileDialog
     {
         m_subdirs.clear();
         m_subdirs.addAll( getDirectories(m_dir) );
-        m_titleView.setText(m_dir);
+        if (Selected_File_Name.isEmpty())
+            m_dirsDialog.getListView().smoothScrollToPosition(0);
+        m_titleView.setText(m_dir.replace("//", "/"));
         m_listAdapter.notifyDataSetChanged();
         //#scorch
         if (Select_type == FileSave || Select_type == FileOpen)
