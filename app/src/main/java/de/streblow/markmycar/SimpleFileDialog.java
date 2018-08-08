@@ -11,12 +11,12 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-//import android.content.DialogInterface.OnKeyListener;
+import android.os.Environment;
 import android.text.Editable;
 import android.text.InputType;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
-//import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -131,17 +131,21 @@ public class SimpleFileDialog
                 }
                 else
                 {
-                    m_dir += "/" + sel;
+                    if (m_dir.equalsIgnoreCase("/"))
+                        m_dir += sel;
+                    else
+                        m_dir += "/" + sel;
                 }
                 Selected_File_Name = Default_File_Name;
-
-                if ((new File(m_dir).isFile())) // If the selection is a regular file
+                File extStore = Environment.getExternalStorageDirectory();
+                String path = extStore.getAbsolutePath() + "/" + m_dir;
+                if ((new File(path).isFile())) // If the selection is a regular file
                 {
                     m_dir = m_dir_old;
                     Selected_File_Name = sel;
-                }
-
-                updateDirectory();
+                    input_text.setText(Selected_File_Name);
+                } else
+                    updateDirectory();
             }
         }
 
@@ -157,13 +161,15 @@ public class SimpleFileDialog
                 // Call registered listener supplied with the chosen directory
                 if (m_SimpleFileDialogListener != null){
                     {
+                        File extStore = Environment.getExternalStorageDirectory();
+                        String path = extStore.getAbsolutePath() + "/" + m_dir;
                         if (Select_type == FileOpen || Select_type == FileSave)
                         {
-                            Selected_File_Name= input_text.getText() +"";
-                            m_SimpleFileDialogListener.onChosenDir(m_dir + "/" + Selected_File_Name);}
+                            Selected_File_Name= input_text.getText() + "";
+                            m_SimpleFileDialogListener.onChosenDir(path + "/" + Selected_File_Name);}
                         else
                         {
-                            m_SimpleFileDialogListener.onChosenDir(m_dir);
+                            m_SimpleFileDialogListener.onChosenDir(path);
                         }
                     }
                 }
@@ -189,7 +195,9 @@ public class SimpleFileDialog
         List<String> files = new ArrayList<String>();
         try
         {
-            File dirFile = new File(dir);
+            File extStore = Environment.getExternalStorageDirectory();
+            String path = extStore.getAbsolutePath() + "/" + dir;
+            File dirFile = new File(path);
 
             // if directory is not the base sd card directory add ".." for going up one directory
             if (! m_dir.equals(m_sdcardDirectory) ) dirs.add("..");
@@ -213,7 +221,9 @@ public class SimpleFileDialog
                 }
             }
         }
-        catch (Exception e)	{}
+        catch (Exception e)	{
+            Log.d("MarkMyCar", e.getMessage());
+        }
 
         Collections.sort(dirs, new Comparator<String>()
         {

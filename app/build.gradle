@@ -34,4 +34,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.caverock:androidsvg:1.2.2-beta-1'
     implementation 'net.sf.kxml:kxml2:2.3.0'
+    implementation 'com.android.support:support-v4:26.1.0'
 }
