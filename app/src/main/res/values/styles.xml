@@ -9,10 +9,10 @@
         <item name="android:colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="FileOpenDialogTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
-        <item name="android:colorPrimary">@color/fileDialogColorPrimary</item>
-        <item name="android:colorPrimaryDark">@color/fileDialogColorPrimaryDark</item>
-        <item name="android:colorAccent">@color/fileDialogColorAccent</item>
+    <style name="OpenMapDialogTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
+        <item name="android:colorPrimary">@color/mapDialogColorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/mapDialogColorPrimaryDark</item>
+        <item name="android:colorAccent">@color/mapDialogColorAccent</item>
         <item name="android:textViewStyle">@style/Medium</item>
     </style>
 

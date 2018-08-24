@@ -17,10 +17,6 @@
 
     <string name="open_map_file">Open a map file (see menu)</string>
 
-    <string name="file_dialog_open">Open map file:</string>
-    <string name="file_dialog_save">Save map file:</string>
-    <string name="file_dialog_select_folder">Select folder:</string>
-    <string name="file_dialog_ok">OK</string>
-    <string name="file_dialog_cancel">Cancel</string>
+    <string name="open_map_dialog">Open map file:</string>
 
 </resources>

@@ -3,7 +3,7 @@
     <color name="colorPrimary">#4F61C5</color>
     <color name="colorPrimaryDark">#283797</color>
     <color name="colorAccent">#B0B0B0</color>
-    <color name="fileDialogColorPrimary">#4F61C5</color>
-    <color name="fileDialogColorPrimaryDark">#B0B0B0</color>
-    <color name="fileDialogColorAccent">#D0D0D0</color>
+    <color name="mapDialogColorPrimary">#4F61C5</color>
+    <color name="mapDialogColorPrimaryDark">#B0B0B0</color>
+    <color name="mapDialogColorAccent">#D0D0D0</color>
 </resources>

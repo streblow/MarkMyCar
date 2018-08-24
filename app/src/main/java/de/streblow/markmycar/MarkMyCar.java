@@ -122,11 +122,9 @@ public class MarkMyCar extends MapViewerTemplate implements LocationListener {
                 }
                 return true;
             case R.id.main_menu_open_map_file:
-                SimpleFileDialog FileOpenDialog = new SimpleFileDialog(this, "FileOpen",
-                        new SimpleFileDialog.SimpleFileDialogListener() {
+                OpenMapDialog dlg = new OpenMapDialog(this, new OpenMapDialog.OpenMapDialogListener() {
                             @Override
                             public void onChosenDir(String chosenFile) {
-                                // The code in this function will be executed when the dialog OK button is pushed
                                 if (chosenFile != "") {
                                     mapfile_path = chosenFile.replace("//", "/");
                                     MarkMyCar.this.updateMapLayer();
@@ -134,8 +132,8 @@ public class MarkMyCar extends MapViewerTemplate implements LocationListener {
                             }
                         });
                 //You can change the default filename using the public variable "Default_File_Name"
-                FileOpenDialog.Default_File_Name = "";
-                FileOpenDialog.chooseFile_or_Dir();
+                dlg.Default_File_Name = "";
+                dlg.chooseFile();
                 return true;
             case R.id.main_menu_help:
                 HelpDialog help = new HelpDialog(this);
@@ -190,7 +188,10 @@ public class MarkMyCar extends MapViewerTemplate implements LocationListener {
         //return new MapFile(new File("/storage/9016-4EF8/Maps", this.getMapFileName()));
         //return new MapFile(new File("/storage/sdcard", this.getMapFileName()));
         if (mapfile_path != "")
-            return new MapFile(new File(mapfile_path));
+        {
+            File f = new File(mapfile_path);
+            return new MapFile(f);
+        }
         else
             return null;
     }

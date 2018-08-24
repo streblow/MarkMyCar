@@ -17,10 +17,6 @@
 
     <string name="open_map_file">Öffnen Sie eine Map-Datei (Menü)</string>
 
-    <string name="file_dialog_open">Map-Datei öffnen:</string>
-    <string name="file_dialog_save">Map-Datei speichern:</string>
-    <string name="file_dialog_select_folder">Verzeichnis wählen:</string>
-    <string name="file_dialog_ok">OK</string>
-    <string name="file_dialog_cancel">Abbrechen</string>
+    <string name="open_map_dialog">Map-Datei öffnen:</string>
 
 </resources>
