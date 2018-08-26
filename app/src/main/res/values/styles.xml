@@ -2,22 +2,8 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
+    <style name="AppTheme" parent="@android:style/Theme.DeviceDefault.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="android:colorPrimary">@color/colorPrimary</item>
-        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="android:colorAccent">@color/colorAccent</item>
-    </style>
-
-    <style name="OpenMapDialogTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
-        <item name="android:colorPrimary">@color/mapDialogColorPrimary</item>
-        <item name="android:colorPrimaryDark">@color/mapDialogColorPrimaryDark</item>
-        <item name="android:colorAccent">@color/mapDialogColorAccent</item>
-        <item name="android:textViewStyle">@style/Medium</item>
-    </style>
-
-    <style name="Medium" parent="@android:style/TextAppearance.Medium">
-        <item name="android:textSize">20sp</item>
     </style>
 
 </resources>

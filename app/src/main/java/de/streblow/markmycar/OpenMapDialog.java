@@ -150,15 +150,12 @@ public class OpenMapDialog {
     private AlertDialog.Builder createDirectoryChooserDialog(String title, List<String> listItems,
                                                              DialogInterface.OnClickListener onClickListener)
     {
-        themeWrapper = new ContextThemeWrapper(m_context, R.style.OpenMapDialogTheme);
+        themeWrapper = new ContextThemeWrapper(m_context, R.style.AppTheme);
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(themeWrapper);
         m_titleView = new TextView(m_context);
         m_titleView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
         m_titleView.setText(m_context.getResources().getText(R.string.open_map_dialog));
         m_titleView.setGravity(Gravity.CENTER_VERTICAL);
-        m_titleView.setTextAppearance(themeWrapper, R.style.Medium);
-        m_titleView.setBackgroundColor( themeWrapper.getResources().getColor(R.color.mapDialogColorPrimary));
-        m_titleView.setTextColor( themeWrapper.getResources().getColor(android.R.color.white) );
         LinearLayout titleLayout = new LinearLayout(m_context);
         titleLayout.setOrientation(LinearLayout.VERTICAL);
         titleLayout.addView(m_titleView);
@@ -190,7 +187,6 @@ public class OpenMapDialog {
                 {
                     // Enable list item (directory) text wrapping
                     TextView tv = (TextView) v;
-                    tv.setTextAppearance(OpenMapDialog.themeWrapper, R.style.Medium);
                     tv.getLayoutParams().height = LayoutParams.WRAP_CONTENT;
                     tv.setEllipsize(null);
                 }
