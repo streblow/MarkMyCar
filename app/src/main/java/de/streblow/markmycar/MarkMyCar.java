@@ -2,13 +2,18 @@ package de.streblow.markmycar;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.os.Build;
 import android.os.Bundle;
@@ -80,6 +85,8 @@ public class MarkMyCar extends MapViewerTemplate implements LocationListener {
 
     private Location curr_location = null;
 
+    private String url_coordinates = "";
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         main_menu = menu;
@@ -120,6 +127,9 @@ public class MarkMyCar extends MapViewerTemplate implements LocationListener {
                     mycar_location_backup = null;
                     mycar_location_backup_set = false;
                 }
+                return true;
+            case R.id.main_menu_send_mycarpoint:
+                sendLocationPerWhatsApp();
                 return true;
             case R.id.main_menu_open_map_file:
                 OpenMapDialog dlg = new OpenMapDialog(this, new OpenMapDialog.OpenMapDialogListener() {
@@ -185,8 +195,6 @@ public class MarkMyCar extends MapViewerTemplate implements LocationListener {
 
     @Override
     protected MapDataStore getMapFile() {
-        //return new MapFile(new File("/storage/9016-4EF8/Maps", this.getMapFileName()));
-        //return new MapFile(new File("/storage/sdcard", this.getMapFileName()));
         if (mapfile_path != "")
         {
             File f = new File(mapfile_path);
@@ -265,7 +273,7 @@ public class MarkMyCar extends MapViewerTemplate implements LocationListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle(getClass().getSimpleName());
-        askPermissions(new String[] {Manifest.permission.ACCESS_COARSE_LOCATION,
+        askPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.READ_EXTERNAL_STORAGE});
         this.locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -325,6 +333,7 @@ public class MarkMyCar extends MapViewerTemplate implements LocationListener {
         super.onResume();
         restorePreferences();
         enableAvailableProviders();
+        handleSetPositionIntent(getIntent());
     }
 
     @Override
@@ -539,10 +548,64 @@ public class MarkMyCar extends MapViewerTemplate implements LocationListener {
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        //
         // Note: If request is cancelled, the result arrays are empty.
         if (grantResults.length == 0) {
             Toast.makeText(getApplicationContext(), "Permission Cancelled!", Toast.LENGTH_SHORT).show();
         }
     }
+
+    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            switch (which){
+                case DialogInterface.BUTTON_POSITIVE:
+                    //Yes button clicked
+                    //http://maps.google.com/maps?q=XX.XXXXXX,YY.YYYYYY
+                    String[] coords = url_coordinates.split(",");
+                    double lat = Double.parseDouble(coords[0]);
+                    double lon = Double.parseDouble(coords[1]);
+                    onLongPress(new LatLong(lat, lon));
+                    break;
+
+                case DialogInterface.BUTTON_NEGATIVE:
+                    //No button clicked
+                    break;
+            }
+        }
+    };
+
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        handleSetPositionIntent(intent);
+    }
+
+    public void handleSetPositionIntent(Intent intent) {
+        String appLinkAction = intent.getAction();
+        Uri appLinkData = intent.getData();
+        if (Intent.ACTION_VIEW.equals(appLinkAction) && appLinkData != null) {
+            url_coordinates = appLinkData.getQueryParameter("q");
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage(getString(R.string.dialog_message))
+                .setPositiveButton(getString(R.string.dialog_yes), dialogClickListener)
+                .setNegativeButton(getString(R.string.dialog_no), dialogClickListener).show();
+        }
+    }
+
+    public void sendLocationPerWhatsApp() {
+        if (!mycar_location_set) return;
+        PackageManager pm = getPackageManager();
+        try {
+            Intent waIntent = new Intent(Intent.ACTION_SEND);
+            waIntent.setType("text/plain");
+            String text = "MarkMyCar:" + System.getProperty("line.separator") +
+                "http://maps.google.com/maps?q=" + mycar_location.getLatitude() + "," + mycar_location.getLongitude();
+            PackageInfo info = pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
+            waIntent.setPackage("com.whatsapp");
+            waIntent.putExtra(Intent.EXTRA_TEXT, text);
+            startActivity(Intent.createChooser(waIntent, getString(R.string.whatsapp_share)));
+        } catch (PackageManager.NameNotFoundException e) {
+            Toast.makeText(this, getString(R.string.whatsapp_not_installed), Toast.LENGTH_LONG).show();
+        }
+    }
+
 }

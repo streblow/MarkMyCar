@@ -9,6 +9,7 @@ Of coarse you can mark any position at the map to remember it!<br>
 <i>"Center at position":</i> The app once scrolls the map to get the current position at the map view's center.<br>
 <i>"Center at car position":</i> The app once scrolls the map to get the car position at the map view's center.<br>
 <i>"Restore car position":</i> If you mistakenly changed your car position you can restore the previous state. This works only one step back. If you hadn't have marked a position your marker will disappear.<br>
+<i>"Send car position (WhatsApp)":</i> Send your current car position by WhatsApp to someone who shares your car with you.<br>
 <i>"Open a map file":</i> Browse your device for a new map file. You can cancel this dialog.<br>
 <i>"Help":</i> Read this help file.<br>
 <i>"About":</i> Show details about the author and the app.

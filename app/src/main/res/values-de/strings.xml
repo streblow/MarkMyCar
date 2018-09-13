@@ -8,6 +8,7 @@
     <string name="main_menu_center_on_position">Position zentrieren</string>
     <string name="main_menu_center_on_mycarpoint">Autoposition zentrieren</string>
     <string name="main_menu_restore_position">Autoposition wiederherstellen</string>
+    <string name="main_menu_send_mycarpoint">Autoposition senden (WhatsApp)</string>
     <string name="main_menu_open_map_file">Map-Datei öffnen</string>
     <string name="main_menu_help">Hilfe</string>
     <string name="main_menu_about">Über</string>
@@ -18,5 +19,12 @@
     <string name="open_map_file">Öffnen Sie eine Map-Datei (Menü)</string>
 
     <string name="open_map_dialog">Map-Datei öffnen:</string>
+
+    <string name="whatsapp_not_installed">WhatsApp ist nicht installiert</string>
+    <string name="whatsapp_share">Autoposition teilen</string>
+
+    <string name="dialog_yes">Ja</string>
+    <string name="dialog_no">Nein</string>
+    <string name="dialog_message">Neue Autoposition übernehmen?</string>
 
 </resources>

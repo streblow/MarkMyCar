@@ -8,6 +8,7 @@
     <string name="main_menu_center_on_position">Center at position</string>
     <string name="main_menu_center_on_mycarpoint">Center at car position</string>
     <string name="main_menu_restore_position">Restore car position</string>
+    <string name="main_menu_send_mycarpoint">Send car position (WhatsApp)</string>
     <string name="main_menu_open_map_file">Open map file</string>
     <string name="main_menu_help">Help</string>
     <string name="main_menu_about">About</string>
@@ -18,5 +19,12 @@
     <string name="open_map_file">Open a map file (see menu)</string>
 
     <string name="open_map_dialog">Open map file:</string>
+
+    <string name="whatsapp_not_installed">WhatsApp not installed</string>
+    <string name="whatsapp_share">Share car position</string>
+
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_no">No</string>
+    <string name="dialog_message">Set new car position?</string>
 
 </resources>

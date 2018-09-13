@@ -22,17 +22,19 @@
         android:id="@+id/main_menu_restore_position"
         android:orderInCategory="140"
         android:title="@string/main_menu_restore_position" />
+    <item android:id="@+id/main_menu_send_mycarpoint"
+        android:orderInCategory="150"
+        android:title="@string/main_menu_send_mycarpoint" />
     <item
         android:id="@+id/main_menu_open_map_file"
-        android:orderInCategory="150"
+        android:orderInCategory="160"
         android:title="@string/main_menu_open_map_file" />
     <item
         android:id="@+id/main_menu_help"
-        android:orderInCategory="160"
-        android:title="@string/main_menu_help" />
-
-    <item android:id="@+id/main_menu_about"
         android:orderInCategory="170"
+        android:title="@string/main_menu_help" />
+    <item android:id="@+id/main_menu_about"
+        android:orderInCategory="180"
         android:title="@string/main_menu_about" />
 
 </menu>

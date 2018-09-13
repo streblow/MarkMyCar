@@ -1,6 +1,6 @@
 <h2>MarkMyCar</h2>
-<b>Version 1.3</b><br>
-&#169; 2018-08-26 Lars Streblow<br>
+<b>Version 1.5</b><br>
+&#169; 2018-09-13 Lars Streblow<br>
 <br>
 streblow.gmxhome.de<br>
 lars.streblow@gmx.de
