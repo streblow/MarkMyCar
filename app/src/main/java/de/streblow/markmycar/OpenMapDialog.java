@@ -43,7 +43,7 @@ public class OpenMapDialog {
     {
         m_context = context;
         m_OpenMapDialogListener = OpenMapDialogListener;
-        m_sdcardDirectory = new File("/mnt").getAbsolutePath();
+        m_sdcardDirectory = new File("/").getAbsolutePath();
     }
 
     public void chooseFile()
@@ -116,6 +116,12 @@ public class OpenMapDialog {
                 dirs.add("..");
             if (!dirFile.exists() || !dirFile.isDirectory())
                 return dirs;
+            if (dir.equalsIgnoreCase("/")) {
+                dirs.add("mnt/");
+                dirs.add("sdcard/");
+                dirs.add("storage/");
+                return dirs;
+            }
             for (File file : dirFile.listFiles())
             {
                 if (file.isDirectory())
